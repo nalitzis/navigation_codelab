@@ -20,9 +20,9 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import androidx.navigation.ui.onNavDestinationSelected
 
 /**
  * Fragment used to show how to navigate to another destination
@@ -56,9 +56,14 @@ class HomeFragment : Fragment() {
         view.findViewById<Button>(R.id.navigate_action_button).setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.nextAction())
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(findNavController()) || super.onOptionsItemSelected(item)
     }
 }

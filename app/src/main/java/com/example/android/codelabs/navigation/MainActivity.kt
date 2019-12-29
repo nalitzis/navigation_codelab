@@ -55,12 +55,10 @@ class MainActivity : AppCompatActivity() {
         // Set up Action Bar
         val navController = host.navController
 
-        //appBarConfiguration = AppBarConfiguration(navController.graph)
-
         val drawerLayout = findViewById<DrawerLayout?>(R.id.drawer_layout)
         appBarConfiguration = AppBarConfiguration(setOf(R.id.home_dest, R.id.deeplink_dest), drawerLayout)
 
-        setupActionBar(navController, appBarConfiguration)
+        setupActionBar(navController)
 
         setupNavigationMenu(navController)
 
@@ -89,8 +87,7 @@ class MainActivity : AppCompatActivity() {
         navigationView?.setupWithNavController(navController)
     }
 
-    private fun setupActionBar(navController: NavController,
-                               appBarConfig : AppBarConfiguration) {
+    private fun setupActionBar(navController: NavController) {
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
